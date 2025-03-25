@@ -116,3 +116,18 @@ Have you explored more about Postman? Tell us how this tool helps you to test yo
 yes, postman is a very helpful tool for testing and checking if your APIs work correctly, especially when building the back-end. It lets you easily send requests like GET, POST, PUT, and DELETE without needing a front-end, and you can see the response clearly with status codes and data. You can save your requests in collections so you don’t have to rewrite them, and use variables to switch between different environments like development or production. Postman also lets you test APIs before the back-end is fully ready by using mock servers, and you can write small scripts to test things automatically. In group projects, it helps everyone test faster, stay organized, and work better together.
 
 #### Reflection Publisher-3
+
+Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+his tutorial uses the Push model because every time something changes in the Product Service—like when a product is added or removed—a notification is immediately sent (or "pushed") to all subscribers who follow that specific product type. This happens through the NotificationService's notify method that we implemented. The subscribers don’t ask for updates; instead, the system automatically pushes the update to them as soon as the change happens. This makes the process fast and automatic, without the subscribers needing to do anything to receive updates.
+
+What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+In the Pull model, the publisher only tells subscribers that something has changed, but it’s up to the subscribers to fetch the actual data themselves. This approach can be more flexible, as subscribers can decide what information they want, and it reduces unnecessary data transfer if not all details are needed. 
+
+However, it also comes with downsides: it adds an extra step, making the process slower, and requires subscribers to know how to fetch the data from the publisher. This increases complexity and creates tighter coupling between the two. In the context of this tutorial, where all subscribers are meant to receive the full notification anyway, using the Pull model would make the system more complicated without offering real advantages.
+
+Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+
+If we don’t use multi-threading, the program will send notifications to all subscribers one by one, in a blocking way. This means: If one subscriber is slow or stuck, the whole process is delayed. The system becomes less responsive, especially if there are many subscribers. The main thread may be blocked, which could freeze or slow down other parts of the app.
+Using multi-threading allows notifications to be sent in parallel, improving performance and keeping the app fast and responsive.
