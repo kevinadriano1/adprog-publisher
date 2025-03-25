@@ -103,4 +103,16 @@ Even if you wrap your subscriber list in a Singleton, you’d still need to use 
 
 #### Reflection Publisher-2
 
+In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
+In traditional MVC, the Model handles both data access and business logic, but as applications grow in complexity, this all-in-one approach becomes difficult to maintain. By separating the Model into a Service layer (for business logic) and a Repository layer (for data access), we follow the Single Responsibility Principle, making each component focused and easier to manage. This separation improves testability, since services can be tested without needing a database, and enhances reusability and flexibility, allowing services to be reused across different parts of the system and repositories to be swapped out with minimal changes. Overall, it leads to cleaner, more modular, and maintainable code.
+
+What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+
+If we rely solely on the Model to handle everything—data representation, business logic, and database access—each model becomes overloaded with responsibilities. This not only makes the code harder to read and maintain but also leads to tight coupling between models, where one model might rely heavily on the internal workings of another. As a result, even minor changes in one part of the code can cause unexpected issues elsewhere. This tangled structure makes the system fragile and difficult to scale. By separating concerns into dedicated Service and Repository layers, we keep our codebase cleaner, more organized, and much easier to test, maintain, and extend in the future.
+
+Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+
+yes, postman is a very helpful tool for testing and checking if your APIs work correctly, especially when building the back-end. It lets you easily send requests like GET, POST, PUT, and DELETE without needing a front-end, and you can see the response clearly with status codes and data. You can save your requests in collections so you don’t have to rewrite them, and use variables to switch between different environments like development or production. Postman also lets you test APIs before the back-end is fully ready by using mock servers, and you can write small scripts to test things automatically. In group projects, it helps everyone test faster, stay organized, and work better together.
+
 #### Reflection Publisher-3
